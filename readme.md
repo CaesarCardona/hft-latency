@@ -1,35 +1,59 @@
+# 1️⃣ Dependencies Installation
 
+## Rust
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustc --version
+cargo --version
+```
+## PostgreSQL system packages
 
-## To start backend 
+```bash
+sudo apt update
+sudo apt install -y postgresql postgresql-contrib libpq-dev
+```
+
+# 2️⃣ Start backend 
+```bash
 cargo run
+```
 
-
-
-
-#Initiate postgres and create user and database
+# 3️⃣ Initiate postgres 
+```bash
  sudo -i -u postgres
-
+```
+## Create user and database
+```bash
 CREATE DATABASE hft;
 CREATE USER postgres WITH PASSWORD 'test';
+```
 
-#Initiate hft Database
-
+# 4️⃣ Connect to 'hft' Database 
+When asked, password = ´test´
+```bash
 psql -h localhost -U postgres -d hft
+```
 ## Check status
+```bash
 sudo systemctl status postgresql
+```
 
+## Create table
 
-## Create table if not create
+```bash
  CREATE TABLE stock_data (
     id SERIAL PRIMARY KEY,
     stock_id INT NOT NULL,
     price REAL NOT NULL,
     ts TIMESTAMP NOT NULL
-
-## Check created table
+```
+### Check created table
+```bash
  \d stock_data
-
-## Check table values
+```
+# 5️⃣ Get latest stock updates
+```bash
 SELECT * FROM stock_data ORDER BY ts DESC LIMIT 20;
-
+```
 
