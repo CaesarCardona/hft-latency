@@ -1,4 +1,4 @@
-# 1️⃣ About
+# 0️⃣ About
 
 Uses Rust Ownership capability and integrates PostgreSQL to visualize and store stock values in the DB.
 
